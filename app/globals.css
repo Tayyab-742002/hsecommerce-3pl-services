@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
-
 :root {
   /* Brand Colors */
   --primary: #fdb913; /* Yellow - Primary brand color */
@@ -27,7 +25,8 @@
   --context-card-border: hsla(0, 0%, 92%, 1);
   --ds-contrast-fg: #ffffff;
   --geist-background: #fff;
-  --ds-shadow-menu: var(--ds-shadow-border), 0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04), 0px 16px 24px -8px rgba(0, 0, 0, 0.06);
+  --ds-shadow-menu: var(--ds-shadow-border), 0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
+    0px 16px 24px -8px rgba(0, 0, 0, 0.06);
   --ds-red-800: oklch(58.19% 0.2482 25.15);
   --ds-red-900: oklch(54.99% 0.232 25.29);
   --ds-blue-700: oklch(57.61% 0.2508 258.23);
@@ -89,8 +88,7 @@
   --border-radius-2xl: 2rem;
   --border-radius-3xl: 2.5rem;
   --border-radius-full: 100%;
-  --color-destructive-foreground: var(--destructive-foreground)
-;
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-context-card-border: var(--context-card-border);
   --color-red-800: var(--ds-red-800);
   --color-red-900: var(--ds-red-900);
@@ -137,11 +135,11 @@
   --ds-shadow-menu: var(----ds-shadow-menu);
   --color-ds-contrast-fg: var(----ds-contrast-fg);
   @keyframes fade-spin {
-  0% {
-    opacity: 0.15;
+    0% {
+      opacity: 0.15;
     }
-  100% {
-    opacity: 1;
+    100% {
+      opacity: 1;
     }
   }
 }
@@ -174,4 +172,3 @@ html {
   background-color: var(--primary);
   color: var(--text-on-primary);
 }
-

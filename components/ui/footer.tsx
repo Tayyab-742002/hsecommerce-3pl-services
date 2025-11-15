@@ -3,15 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Package, Mail, Phone, MapPin } from "lucide-react";
-
-const services = [
-  { name: "Warehousing & Storage", href: "/services/warehousing" },
-  { name: "Pick & Pack Fulfilment", href: "/services/pick-pack" },
-  { name: "FBA & FBM Fulfilment", href: "/services/fba-fbm" },
-  { name: "Kitting & Bundling", href: "/services/kitting" },
-  { name: "Wholesale Fulfilment", href: "/services/wholesale" },
-  { name: "Container Unloading", href: "/services/container-unloading" },
-];
+import { services } from "@/lib/services-data";
 
 const company = [
   { name: "About Us", href: "/about" },
@@ -85,13 +77,13 @@ export const Footer = () => {
               Services
             </h3>
             <ul className="space-y-3">
-              {services.map((item) => (
-                <li key={item.name}>
+              {services.map((service) => (
+                <li key={service.id}>
                   <Link
-                    href={item.href}
+                    href={`/services/${service.slug}`}
                     className="text-white/60 text-sm hover:text-primary transition-colors duration-200 inline-block"
                   >
-                    {item.name}
+                    {service.title}
                   </Link>
                 </li>
               ))}

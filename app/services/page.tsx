@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { CTASection } from "@/components/ui/cta-section";
-import { ServiceCard } from "@/components/ui/service-card";
+import { ServiceListingCard } from "@/components/ui/service-listing-card";
 import { services } from "@/lib/services-data";
 import {
   Warehouse,
@@ -96,7 +96,7 @@ const ServicesPage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <ServiceCard
+                <ServiceListingCard
                   imageUrl={service.imageUrl}
                   imageAlt={service.imageAlt}
                   iconName={service.iconName}

@@ -1,145 +1,151 @@
-"use client";
-
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import Image from "next/image";
+import { cva, type VariantProps } from "class-variance-authority";
+import { motion, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import {
-  Warehouse,
-  PackageCheck,
-  ShoppingCart,
-  Gift,
-  PackageOpen,
-  Building2,
-  Truck,
-  RotateCcw,
-  Container,
-  type LucideIcon,
-} from "lucide-react";
 
-// Icon mapping
-const iconMap: Record<string, LucideIcon> = {
-  Warehouse,
-  PackageCheck,
-  ShoppingCart,
-  Gift,
-  PackageOpen,
-  Building2,
-  Truck,
-  RotateCcw,
-  Container,
-};
+import { cn } from "@/lib/utils";
 
-interface ServiceCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  imageUrl: string;
-  imageAlt: string;
-  iconName: string;
+// CVA for card variants
+const cardVariants = cva(
+  "relative flex flex-col justify-between w-full p-6 overflow-hidden rounded-xl shadow-sm transition-shadow duration-300 ease-in-out group hover:shadow-lg",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-card-foreground",
+        red: "bg-red-500/90 text-primary-foreground",
+        blue: "bg-blue-500/90 text-primary-foreground",
+        gray: "bg-secondary text-secondary-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+export interface ServiceCardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {
+  /**
+   * The main title of the card.
+   */
   title: string;
-  tagline: string;
-  overview: string;
-  href: string;
-  stat?: {
-    value: string;
-    label: string;
-  };
+  /**
+   * The URL the card's link should point to.
+   */
+  href?: string;
+  /**
+   * The source URL for the decorative image.
+   */
+  imgSrc?: string;
+  /**
+   * The alt text for the decorative image, for accessibility.
+   */
+  imgAlt?: string;
+  /**
+   * Optional description text.
+   */
+  description?: string;
+  /**
+   * Optional step number.
+   */
+  stepNumber?: string;
 }
 
 const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
   (
     {
       className,
-      imageUrl,
-      imageAlt,
-      iconName,
+      variant,
       title,
-      tagline,
-      overview,
       href,
-      stat,
+      imgSrc,
+      imgAlt,
+      description,
+      stepNumber,
       ...props
     },
     ref
   ) => {
-    const Icon = iconMap[iconName] || PackageCheck;
+    // Animation variants for Framer Motion
+    const cardAnimation = {
+      hover: {
+        scale: 1.02,
+        transition: { duration: 0.3 },
+      },
+    };
 
-    return (
-      <div
+    const imageAnimation = {
+      hover: {
+        scale: 1.1,
+        rotate: 3,
+        x: 10,
+        transition: { duration: 0.4, ease: "easeInOut" },
+      },
+    };
+
+    const arrowAnimation = {
+      hover: {
+        x: 5,
+        transition: {
+          duration: 0.3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+        },
+      },
+    };
+
+    const content = (
+      <motion.div
+        className={cn(cardVariants({ variant, className }))}
         ref={ref}
-        className={cn(
-          "group relative w-full h-[500px] overflow-hidden rounded-xl border border-border bg-card shadow-lg",
-          "transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2",
-          className
-        )}
+        variants={cardAnimation}
+        whileHover="hover"
         {...props}
       >
-        {/* Background Image with Zoom Effect on Hover */}
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-          quality={90}
-        />
-
-        {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-black/30"></div>
-
-        {/* Content Container */}
-        <div className="relative flex h-full flex-col justify-between p-6 text-card-foreground">
-          {/* Top Section: Icon */}
-          <div className="flex h-40 items-start">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/50 bg-black/20 backdrop-blur-sm">
-              <Icon className="h-6 w-6 text-white" strokeWidth={2.5} />
+        <div className="relative z-10 flex flex-col h-full">
+          {/* {stepNumber && (
+            <div className="text-6xl font-bold text-primary/20 mb-2 font-heading leading-none">
+              {stepNumber}
             </div>
-          </div>
-
-          {/* Middle Section: Details (slides up on hover) */}
-          <div className="space-y-4 transition-transform duration-500 ease-in-out group-hover:-translate-y-16">
-            <div>
-              <h3 className="text-3xl font-bold text-white font-heading">
-                {title}
-              </h3>
-              <p className="text-sm text-white/80 mt-1">{tagline}</p>
-            </div>
-            <div>
-              <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-2">
-                OVERVIEW
-              </h4>
-              <p className="text-sm text-white/70 leading-relaxed line-clamp-3">
-                {overview}
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Section: Stat and Button (revealed on hover) */}
-          <div className="absolute -bottom-20 left-0 w-full p-6 opacity-0 transition-all duration-500 ease-in-out group-hover:bottom-0 group-hover:opacity-100">
-            <div className="flex items-end justify-between gap-4">
-              {stat && (
-                <div>
-                  <span className="text-3xl font-bold text-primary font-heading">
-                    {stat.value}
-                  </span>
-                  <span className="text-white/80 text-sm block mt-1">
-                    {stat.label}
-                  </span>
-                </div>
-              )}
-              <Link
-                href={href}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-black font-bold transition-all duration-200 text-sm"
-              >
-                Learn More
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+          )} */}
+          <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3 font-heading text-primary">
+            {title}
+          </h3>
+          {description && (
+            <p className="text-sm leading-relaxed mb-4 opacity-70">
+              {description}
+            </p>
+          )}
+          {href && (
+            <a
+              href={href}
+              aria-label={`Learn more about ${title}`}
+              className="mt-auto flex items-center text-sm font-semibold group-hover:underline"
+            >
+              LEARN MORE
+              <motion.div variants={arrowAnimation as Variants}>
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </motion.div>
+            </a>
+          )}
         </div>
-      </div>
+
+        {imgSrc && (
+          <motion.img
+            src={imgSrc}
+            alt={imgAlt || title}
+            className="absolute -right-8 -bottom-8 w-40 h-40 object-contain opacity-30 group-hover:opacity-70"
+            variants={imageAnimation as Variants}
+          />
+        )}
+      </motion.div>
     );
+
+    return content;
   }
 );
 ServiceCard.displayName = "ServiceCard";
 
 export { ServiceCard };
-

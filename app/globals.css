@@ -1,26 +1,177 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --primary: #fdb913; /* Yellow - Primary brand color */
+  --primary-dark: #e5a50d; /* Darker yellow for hovers */
+  --primary-light: #feca57; /* Lighter yellow for backgrounds */
+
+  --secondary: #000000; /* Black - Secondary color */
+  --secondary-light: #1a1a1a; /* Slightly lighter black */
+
+  --background: #ffffff; /* White background */
+  --surface: #f8f9fa; /* Light gray for cards/sections */
+
+  --text-primary: #000000; /* Black text */
+  --text-secondary: #4a4a4a; /* Gray text */
+  --text-on-primary: #000000; /* Text on yellow background */
+  --text-on-dark: #ffffff; /* Text on black background */
+
+  /* Borders & Dividers */
+  --border: #e5e5e5;
+  --border-dark: #cccccc;
+  --destructive-foreground: oklch(1 0 0);
+  --context-card-border: hsla(0, 0%, 92%, 1);
+  --ds-contrast-fg: #ffffff;
+  --geist-background: #fff;
+  --ds-shadow-menu: var(--ds-shadow-border), 0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04), 0px 16px 24px -8px rgba(0, 0, 0, 0.06);
+  --ds-red-800: oklch(58.19% 0.2482 25.15);
+  --ds-red-900: oklch(54.99% 0.232 25.29);
+  --ds-blue-700: oklch(57.61% 0.2508 258.23);
+  --ds-amber-800: oklch(77.21% 0.1991 64.28);
+  --ds-amber-850: hsl(33, 96%, 42%);
+  --ds-gray-100: hsla(0, 0%, 95%, 1);
+  --ds-gray-400: hsla(0, 0%, 92%, 1);
+  --ds-gray-700: hsla(0, 0%, 56%, 1);
+  --ds-gray-1000: hsla(0, 0%, 9%, 1);
+  --ds-gray-1000-h: hsl(0, 0%, 22%);
+  --ds-gray-alpha-200: hsla(0, 0%, 0%, 0.08);
+  --ds-gray-alpha-400: hsla(0, 0%, 0%, 0.08);
+  --ds-background-100: hsla(0, 0%, 100%, 1);
+  --ds-focus-color: var(--ds-blue-700);
+  --ds-focus-ring: 0 0 0 2px var(--ds-background-100), 0 0 0 4px var(--ds-focus-color);
+  --ds-shadow-border: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --ds-shadow-small: 0px 2px 2px rgba(0, 0, 0, 0.04);
+  --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
+  --ds-blue-100: oklch(97.32% 0.0141 251.56);
+  --ds-blue-900: oklch(53.18% 0.2399 256.9900584162342);
+  --ds-red-100: oklch(96.5% 0.0223 13.09);
+  --ds-amber-100: oklch(97.48% 0.0331 85.79);
+  --ds-amber-900: oklch(52.79% 0.1496 54.65);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-primary: var(--text-on-primary);
+  --color-text-on-dark: var(--text-on-dark);
+
+  --color-border: var(--border);
+  --color-border-dark: var(--border-dark);
+
+  /* Typography */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-montserrat), system-ui, -apple-system, sans-serif;
+
+  /* Spacing (if needed for custom values) */
+  --spacing-section: 5rem;
+  --spacing-container: 1.5rem;
+
+  /* border radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-2xl: 2rem;
+  --border-radius-3xl: 2.5rem;
+  --border-radius-full: 100%;
+  --color-destructive-foreground: var(--destructive-foreground)
+;
+  --color-context-card-border: var(--context-card-border);
+  --color-red-800: var(--ds-red-800);
+  --color-red-900: var(--ds-red-900);
+  --color-blue-700: var(--ds-blue-700);
+  --color-amber-800: var(--ds-amber-800);
+  --color-amber-850: var(--ds-amber-850);
+  --color-gray-100: var(--ds-gray-100);
+  --color-gray-400: var(--ds-gray-400);
+  --color-gray-700: var(--ds-gray-700);
+  --color-gray-1000: var(--ds-gray-1000);
+  --color-gray-1000-h: var(--ds-gray-1000-h);
+  --color-gray-alpha-200: var(--ds-gray-alpha-200);
+  --color-gray-alpha-400: var(--ds-gray-alpha-400);
+  --color-background-100: var(--ds-background-100);
+  --color-contrast-fg: var(--ds-contrast-fg);
+  --color-geist-background: var(--geist-background);
+  --shadow-focus-ring: var(--ds-focus-ring);
+  --shadow-border-small: var(--ds-shadow-border-small);
+  --shadow-menu: var(--ds-shadow-menu);
+  --animate-fade-spin: fade-spin 1.2s linear infinite;
+  --color-ds-amber-900: var(----ds-amber-900);
+  --color-ds-amber-100: var(----ds-amber-100);
+  --color-ds-red-100: var(----ds-red-100);
+  --color-ds-blue-900: var(----ds-blue-900);
+  --color-ds-blue-100: var(----ds-blue-100);
+  --ds-shadow-border-small: var(----ds-shadow-border-small);
+  --ds-shadow-small: var(----ds-shadow-small);
+  --ds-shadow-border: var(----ds-shadow-border);
+  --ds-focus-ring: var(----ds-focus-ring);
+  --ds-focus-color: var(----ds-focus-color);
+  --color-ds-background-100: var(----ds-background-100);
+  --color-ds-gray-alpha-400: var(----ds-gray-alpha-400);
+  --color-ds-gray-alpha-200: var(----ds-gray-alpha-200);
+  --color-ds-gray-1000-h: var(----ds-gray-1000-h);
+  --color-ds-gray-1000: var(----ds-gray-1000);
+  --color-ds-gray-700: var(----ds-gray-700);
+  --color-ds-gray-400: var(----ds-gray-400);
+  --color-ds-gray-100: var(----ds-gray-100);
+  --color-ds-amber-850: var(----ds-amber-850);
+  --color-ds-amber-800: var(----ds-amber-800);
+  --color-ds-blue-700: var(----ds-blue-700);
+  --color-ds-red-900: var(----ds-red-900);
+  --color-ds-red-800: var(----ds-red-800);
+  --ds-shadow-menu: var(----ds-shadow-menu);
+  --color-ds-contrast-fg: var(----ds-contrast-fg);
+  @keyframes fade-spin {
+  0% {
+    opacity: 0.15;
+    }
+  100% {
+    opacity: 1;
+    }
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Remove focus outline and add custom focus styles */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+}
+

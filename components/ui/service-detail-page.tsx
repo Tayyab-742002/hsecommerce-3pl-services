@@ -35,21 +35,21 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       {/* Overview Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             className="max-w-3xl"
-          >
-            <div className="w-12 h-1 bg-primary mb-6"></div>
+            >
+              <div className="w-12 h-1 bg-primary mb-6"></div>
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 font-heading">
-              Service Overview
-            </h2>
-            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
-              {service.overview.description}
-            </p>
-          </motion.div>
+                Service Overview
+              </h2>
+              <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+                {service.overview.description}
+              </p>
+            </motion.div>
         </div>
       </section>
 
@@ -97,12 +97,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               const decorativeImage = countImages[index];
 
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <ServiceCard
                     variant="default"
@@ -113,7 +113,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                     imgAlt={`${step.title} illustration`}
                     className="bg-black/95 border border-white/10 text-white h-full"
                   />
-                </motion.div>
+              </motion.div>
               );
             })}
           </div>
@@ -168,10 +168,10 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       {/* Gallery Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div
+              <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+                viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >

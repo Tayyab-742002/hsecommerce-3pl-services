@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         port: "", // Optional: Specify a port if needed
         pathname: "/**", // Optional: Specify a path pattern
       },
+      {
+        protocol: "https",
+        hostname: "alt.tailus.io",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -136,7 +136,7 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
           <motion.img
             src={imgSrc}
             alt={imgAlt || title}
-            className="absolute -right-8 -bottom-8 w-40 h-40 object-contain opacity-30 group-hover:opacity-70"
+            className="absolute -right-8 -bottom-8 w-40 h-40 object-contain opacity-30 group-hover:opacity-100"
             variants={imageAnimation as Variants}
           />
         )}

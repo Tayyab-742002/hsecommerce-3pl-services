@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { ServiceDetail } from "@/lib/services-data";
+import { Service } from "@/lib/services-data";
 
 interface ServicesGridProps {
-  services: ServiceDetail[];
+  services: Service[];
 }
 
 export const ServicesGrid: React.FC<ServicesGridProps> = ({ services }) => {
@@ -28,7 +28,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ services }) => {
               <Link href={`/services/${service.slug}`}>
                 <div className="relative h-64 overflow-hidden mb-6">
                   <Image
-                    src={service.heroImage}
+                    src={service.hero.image}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -37,7 +37,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ services }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <p className="text-primary text-xs font-medium mb-2 tracking-widest uppercase">
-                      {service.subtitle}
+                      {service.tagline}
                     </p>
                     <h3 className="text-2xl font-bold text-white font-heading">
                       {service.title}
@@ -45,7 +45,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ services }) => {
                   </div>
                 </div>
                 <p className="text-text-secondary mb-4 leading-relaxed">
-                  {service.description}
+                  {service.overview.description}
                 </p>
                 <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-4 transition-all duration-300">
                   Learn More

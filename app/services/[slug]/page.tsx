@@ -15,6 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
+// Prevent 404s for unknown slugs - return 404 instead
+export const dynamicParams = false;
+
 // Generate metadata for each service
 export async function generateMetadata({
   params,

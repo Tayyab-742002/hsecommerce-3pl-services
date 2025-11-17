@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com", // Replace with your desired hostname
-        port: "", // Optional: Specify a port if needed
-        pathname: "/**", // Optional: Specify a path pattern
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
       },
       {
         protocol: "https",
@@ -23,6 +23,17 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  // Optimize for Vercel
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // Enable static generation for better performance
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 };
 

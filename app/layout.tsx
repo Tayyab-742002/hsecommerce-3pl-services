@@ -3,7 +3,7 @@ import { Inter, Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/navbar-menu";
 import { Footer } from "@/components/ui/footer";
-
+import { Analytics } from "@vercel/analytics/next";
 // Primary font for body text - clean and professional
 const inter = Inter({
   variable: "--font-inter",
@@ -66,6 +66,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

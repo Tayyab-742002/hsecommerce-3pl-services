@@ -19,19 +19,20 @@ const members = [
   {
     name: "Qazi Haris",
     role: "Founder",
-    avatar: "https://i.pravatar.cc/200",
+    avatar: "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/haris.png",
     link: "#",
   },
   {
     name: "Raheel Ahmed",
     role: "Founder",
-    avatar: "https://i.pravatar.cc/760",
+    avatar: "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/raheel.png",
     link: "#",
   },
   {
     name: "Tayab",
     role: "Founder",
-    avatar: "https://i.pravatar.cc/205",
+    avatar:
+      "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/Screenshot%202025-11-18%20002857.png",
     link: "#",
   },
 ];

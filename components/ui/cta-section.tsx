@@ -18,7 +18,7 @@ export const CTASection = () => {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
-            src="/cta-video.mp4"
+            src="https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/cta-video.mp4"
             type="video/mp4"
           />
         </video>

@@ -45,7 +45,7 @@ const AboutPage = () => {
         subtitle="H&S E-commerce LTD"
         meta="Since 2015"
         backgroundImage="https://images.unsplash.com/photo-1727199079123-ba845d5ab4f6?w=2400&h=1600&fit=crop&q=90"
-        media="/about-section-video.mp4"
+        media="https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/about-section-video.mp4"
         mediaType="video"
         poster="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=2400&h=1600&fit=crop&q=90"
         autoPlay={true}

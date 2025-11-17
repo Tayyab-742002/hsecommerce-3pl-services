@@ -17,21 +17,21 @@ const values = [
 
 const members = [
   {
-    name: "Liam Brown",
-    role: "Founder - CEO",
-    avatar: "/raheel.jpeg",
+    name: "Qazi Haris",
+    role: "Founder",
+    avatar: "https://i.pravatar.cc/200",
     link: "#",
   },
   {
-    name: "Elijah Jones",
-    role: "Co-Founder - CTO",
-    avatar: "/raja.jpeg",
+    name: "Raheel Ahmed",
+    role: "Founder",
+    avatar: "https://i.pravatar.cc/760",
     link: "#",
   },
   {
-    name: "Isabella Garcia",
-    role: "Sales Manager",
-    avatar: "https://alt.tailus.io/images/team/member-three.webp",
+    name: "Tayab",
+    role: "Founder",
+    avatar: "https://i.pravatar.cc/205",
     link: "#",
   },
 ];

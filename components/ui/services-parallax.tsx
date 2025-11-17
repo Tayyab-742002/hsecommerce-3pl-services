@@ -5,99 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "./section-header";
-
-const servicesData = [
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1727199079123-ba845d5ab4f6?w=2000&h=1200&fit=crop&q=80",
-    subheading: "Storage Solutions",
-    heading: "Warehousing & Storage",
-    description:
-      "State-of-the-art warehouse facilities with 24/7 security, climate control, and advanced inventory management systems.",
-    features: [
-      "Real-time stock tracking and reporting",
-      "Secure, climate-controlled facilities",
-      "Flexible storage options (pallets, shelving, bulk)",
-      "Advanced warehouse management system",
-    ],
-    href: "/services#warehousing",
-  },
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1703925152869-0a4e47c74bc3?w=2000&h=1200&fit=crop&q=80",
-    subheading: "Order Fulfilment",
-    heading: "Pick & Pack Services",
-    description:
-      "Fast, accurate order processing with same-day dispatch available. Professional packaging materials and quality checks ensure products arrive safely.",
-    features: [
-      "Same-day dispatch for urgent orders",
-      "Quality control at every stage",
-      "Custom packaging solutions",
-      "Integration with all major platforms",
-    ],
-    href: "/services#pick-pack",
-  },
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1704204656144-3dd12c110dd8?w=2000&h=1200&fit=crop&q=80",
-    subheading: "Amazon Ready",
-    heading: "FBA & FBM Fulfilment",
-    description:
-      "Expert Amazon preparation services including labeling, inspection, and shipment creation. Free product inspection with every FBA/FBM order.",
-    features: [
-      "Free product inspection included",
-      "Amazon-compliant labeling and prep",
-      "Fast turnaround times",
-      "Multi-channel fulfilment support",
-    ],
-    href: "/services#fba-fbm",
-  },
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1600186755589-84242bd8368f?w=2000&h=1200&fit=crop&q=80",
-    subheading: "Product Assembly",
-    heading: "Kitting & Bundling",
-    description:
-      "Custom product bundling and kit assembly services. Perfect for promotional packages, gift sets, and multi-item product combinations.",
-    features: [
-      "Custom bundle creation",
-      "Gift set assembly and wrapping",
-      "Promotional package preparation",
-      "Quality control and inspection",
-    ],
-    href: "/services#kitting",
-  },
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1617909517211-c4e4275bf5b6?w=2000&h=1200&fit=crop&q=80",
-    subheading: "B2B Solutions",
-    heading: "Wholesale Fulfilment",
-    description:
-      "Specialized B2B fulfilment for wholesale orders. Pallet management, bulk picking, and customized shipping solutions for trade customers.",
-    features: [
-      "Bulk order processing",
-      "Pallet management and shipping",
-      "Customized B2B solutions",
-      "EDI integration available",
-    ],
-    href: "/services#wholesale",
-  },
-  {
-    imgUrl:
-      "https://images.unsplash.com/photo-1703194531119-e8b98a555cb6?w=2000&h=1200&fit=crop&q=80",
-    subheading: "Logistics",
-    heading: "Container Unloading",
-    description:
-      "Expert container unloading and devanning services. Full inventory check-in, damage assessment, and immediate warehouse allocation.",
-    features: [
-      "Professional unloading team",
-      "Damage assessment and reporting",
-      "Immediate inventory check-in",
-      "Fast warehouse allocation",
-    ],
-    href: "/services#container-unloading",
-  },
-];
+import { services } from "@/lib/services-data";
 
 const IMG_PADDING = 12;
 
@@ -119,11 +27,12 @@ const TextParallaxContent = ({
   return (
     <div
       style={{
-        paddingLeft: IMG_PADDING,
-        paddingRight: IMG_PADDING,
+        paddingLeft: "8px",
+        paddingRight: "8px",
       }}
+      className="sm:px-3"
     >
-      <div className="relative h-100vh">
+      <div className="relative h-screen min-h-[600px] sm:min-h-[700px]">
         <StickyImage imgUrl={imgUrl} />
         <OverlayCopy
           heading={heading}
@@ -199,41 +108,87 @@ const OverlayCopy = ({
         opacity,
       }}
       ref={targetRef}
-      className="absolute inset-0 flex items-center justify-center px-6 md:px-8 lg:px-16"
+      className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12"
     >
-      <div className="max-w-6xl w-full">
+      <div className="max-w-6xl w-full max-h-[90vh] overflow-y-auto">
         {/* Heading */}
-        <div className="mb-8 lg:mb-12">
-          <p className="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-3">
+        <div className="mb-4 sm:mb-6 lg:mb-8">
+          <p className="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-2 sm:mb-3">
             {subheading}
           </p>
-          <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] font-heading">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-[1.1] sm:leading-[1.05] font-heading">
             {heading}
           </h3>
         </div>
 
         {/* Glass Card */}
-        <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-8 sm:p-10 lg:p-12 max-w-3xl">
-          <p className="text-white text-base sm:text-lg leading-relaxed mb-8">
+        <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 max-w-3xl">
+          <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 md:mb-8">
             {description}
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-3 sm:gap-y-4 mb-6 sm:mb-8 md:mb-10 max-h-[200px] sm:max-h-none overflow-y-auto sm:overflow-visible">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <div className="w-1 h-1 bg-primary mt-2 shrink-0 rounded-full"></div>
-                <p className="text-sm text-white/90">{feature}</p>
+              <div key={index} className="flex items-start gap-2 sm:gap-3">
+                <div className="w-1 h-1 bg-primary mt-1.5 sm:mt-2 shrink-0 rounded-full"></div>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  {feature}
+                </p>
               </div>
             ))}
           </div>
 
           <Link
             href={href}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:bg-primary-dark text-black font-bold text-sm transition-all duration-200 group"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 md:py-3.5 bg-primary hover:bg-primary-dark text-black font-bold text-xs sm:text-sm transition-all duration-200 group"
           >
             Learn More
             <ArrowRight
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300"
+              strokeWidth={2.5}
+            />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const ViewMoreServicesCard = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
+
+  return (
+    <motion.div
+      style={{
+        y,
+        opacity,
+      }}
+      ref={targetRef}
+      className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12"
+    >
+      <div className="max-w-6xl w-full">
+        <div className="bg-black border-2 border-primary p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 max-w-3xl mx-auto text-center">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-6 font-heading">
+            Explore All Services
+          </h3>
+          <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto">
+            Discover our complete range of 3PL solutions designed to streamline
+            your e-commerce operations.
+          </p>
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 bg-primary hover:bg-primary-dark text-black font-bold text-sm sm:text-base transition-all duration-200 group"
+          >
+            View More Services
+            <ArrowRight
+              className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
               strokeWidth={2.5}
             />
           </Link>
@@ -247,7 +202,7 @@ export const ServicesParallaxSection = () => {
   return (
     <div className="bg-white">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto px-8 py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
         <SectionHeader
           subtitle="Our Services"
           title="Complete 3PL Solutions"
@@ -259,25 +214,46 @@ export const ServicesParallaxSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-lg text-text-secondary max-w-2xl mx-auto text-center"
+          className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto text-center mt-4 sm:mt-6"
         >
           From warehousing to final mile delivery, we provide end-to-end
           fulfilment services designed to scale with your business.
         </motion.p>
       </div>
 
-      {/* Parallax Services */}
-      {servicesData.map((service, index) => (
-        <TextParallaxContent
-          key={index}
-          imgUrl={service.imgUrl}
-          subheading={service.subheading}
-          heading={service.heading}
-          description={service.description}
-          features={service.features}
-          href={service.href}
-        />
-      ))}
+      {/* Parallax Services - Show only first 3 */}
+      {services.slice(0, 4).map((service, index) => {
+        // For the last card (3rd one), show "View More Services" instead
+        if (index === 3) {
+          return (
+            <div
+              key={`view-more-${index}`}
+              style={{
+                paddingLeft: "8px",
+                paddingRight: "8px",
+              }}
+              className="sm:px-3"
+            >
+              <div className="relative h-screen min-h-[600px] sm:min-h-[700px]">
+                <StickyImage imgUrl={service.hero.image} />
+                <ViewMoreServicesCard />
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <TextParallaxContent
+            key={index}
+            imgUrl={service.hero.image}
+            subheading={service.title}
+            heading={service.title}
+            description={service.overview.description}
+            features={service.overview.features}
+            href={`/services/${service.slug}`}
+          />
+        );
+      })}
 
       {/* CTA Section */}
       {/* <div className="bg-black py-20">

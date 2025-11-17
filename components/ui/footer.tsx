@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { Package, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { services } from "@/lib/services-data";
+import Image from "next/image";
 
 const company = [
   { name: "About Us", href: "/about" },
@@ -25,10 +26,15 @@ export const Footer = () => {
               className="inline-flex items-center gap-3 mb-6 group"
             >
               <div className="w-12 h-12 bg-primary flex items-center justify-center group-hover:bg-primary-dark transition-colors duration-300">
-                <Package className="w-7 h-7 text-black" strokeWidth={2.5} />
+                <Image
+                  src="/logo.JPG"
+                  alt="H&S E-commerce"
+                  width={44}
+                  height={44}
+                />
               </div>
               <div>
-                <div className="text-white font-bold text-xl tracking-tight font-[family-name:var(--font-heading)]">
+                <div className="text-white font-bold text-xl tracking-tight font-heading">
                   H&S E-COMMERCE
                 </div>
                 <div className="text-primary text-[10px] font-medium tracking-widest uppercase">
@@ -42,25 +48,32 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/hs_ecommercex?igsh=cWJuODdmNnB6dXZk&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                aria-label="LinkedIn"
+                aria-label="Instagram"
+              >
+                <Instagram
+                  className="w-5 h-5 text-white/60 hover:text-primary transition-colors"
+                  strokeWidth={2}
+                />
+              </a>
+              <a
+                href="https://www.tiktok.com/@hsecommerce?_r=1&_t=ZN-91TrsekSCak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label="TikTok"
               >
                 <span className="text-white/60 hover:text-primary text-sm font-bold">
-                  in
+                  TT
                 </span>
               </a>
               <a
-                href="#"
-                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <span className="text-white/60 hover:text-primary text-sm font-bold">
-                  𝕏
-                </span>
-              </a>
-              <a
-                href="#"
+                href="https://www.facebook.com/share/181eSxPLAm/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
                 aria-label="Facebook"
               >
@@ -121,7 +134,7 @@ export const Footer = () => {
                   className="flex items-start gap-3 text-white/60 text-sm hover:text-primary transition-colors duration-200 group"
                 >
                   <Mail
-                    className="w-4 h-4 mt-0.5 flex-shrink-0 group-hover:text-primary"
+                    className="w-4 h-4 mt-0.5 shrink-0 group-hover:text-primary"
                     strokeWidth={2}
                   />
                   <span>info@hsecommerce.co.uk</span>
@@ -129,24 +142,23 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="tel:+441234567890"
+                  href="tel:+447955426807"
                   className="flex items-start gap-3 text-white/60 text-sm hover:text-primary transition-colors duration-200 group"
                 >
                   <Phone
-                    className="w-4 h-4 mt-0.5 flex-shrink-0 group-hover:text-primary"
+                    className="w-4 h-4 mt-0.5 shrink-0 group-hover:text-primary"
                     strokeWidth={2}
                   />
-                  <span>+44 1234 567890</span>
+                  <span>+447955426807</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-3 text-white/60 text-sm">
-                  <MapPin
-                    className="w-4 h-4 mt-0.5 flex-shrink-0"
-                    strokeWidth={2}
-                  />
+                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" strokeWidth={2} />
                   <span>
-                    Warehouse Address
+                    Business Park, Unit 1 Carlinghurst Rd
+                    <br />
+                    George St W, Blackburn BB2 1PQ
                     <br />
                     United Kingdom
                   </span>

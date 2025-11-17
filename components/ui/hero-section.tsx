@@ -120,7 +120,7 @@ const ShuffleGrid = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[500px] lg:h-[600px] gap-1 bg-transparent">
+    <div className="grid grid-cols-4 grid-rows-4 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] gap-1 bg-transparent">
       {squares.map((sq) => sq)}
     </div>
   );
@@ -128,20 +128,21 @@ const ShuffleGrid = () => {
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-white">
-      <div className="max-w-[1400px] mx-auto px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20 min-h-[calc(100vh-6rem)] py-12">
+    <section className="relative bg-white pt-20 sm:pt-24 lg:pt-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-20 min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] py-8 sm:py-12">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="pt-4 sm:pt-0"
           >
-            <span className="inline-block mb-6 text-xs font-bold text-black uppercase tracking-widest border-l-4 border-primary pl-4">
+            <span className="inline-block mb-4 sm:mb-6 text-[10px] sm:text-xs font-bold text-black uppercase tracking-widest border-l-4 border-primary pl-3 sm:pl-4">
               UK&apos;s Leading 3PL Provider
             </span>
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-8 leading-[1.05] tracking-tight font-heading">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-6 sm:mb-8 leading-[1.05] tracking-tight font-heading">
               Your Trusted
               <br />
               3PL Fulfilment
@@ -149,7 +150,7 @@ export const HeroSection = () => {
               Partner
             </h1>
 
-            <p className="text-lg lg:text-xl text-text-secondary mb-10 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg lg:text-xl text-text-secondary mb-8 sm:mb-10 leading-relaxed max-w-xl">
               E-commerce (B2B & B2C) Fulfilment, Storage, Container Handling &
               More. We manage your inventory efficiently so you can focus on
               sales.
@@ -182,21 +183,21 @@ export const HeroSection = () => {
             </div> */}
 
             {/* CTA Buttons */}
-            <div className="flex flex-col mt-5 sm:flex-row gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-16">
               <Link
                 href="/contact"
-                className="group inline-flex  items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary-dark text-black font-bold transition-all duration-200"
+                className="group inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary hover:bg-primary-dark text-black font-bold text-sm sm:text-base transition-all duration-200"
               >
                 Get a Quote
                 <ArrowRight
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"
                   strokeWidth={2.5}
                 />
               </Link>
 
               <Link
                 href="/services"
-                className="inline-flex  items-center justify-center px-8 py-4 border-2 border-black text-black font-bold hover:bg-black hover:text-white transition-all duration-200"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-black text-black font-bold text-sm sm:text-base hover:bg-black hover:text-white transition-all duration-200"
               >
                 View Services
               </Link>

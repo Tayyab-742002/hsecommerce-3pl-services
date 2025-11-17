@@ -16,13 +16,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: "+44 1234 567890",
-    link: "tel:+441234567890",
+    details: "+447955426807",
+    link: "tel:+447955426807",
   },
   {
     icon: MapPin,
     title: "Address",
-    details: "Unit 1, Warehouse District\nLondon, UK",
+    details:
+      "Business Park, Unit 1 Carlinghurst Rd, George St W, Blackburn BB2 1PQ, United Kingdom",
     link: "https://maps.google.com",
   },
   {
@@ -168,7 +169,7 @@ const ContactPage = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#1D1D1D] border border-white/30 focus:border-0 focus:ring-0 outline-none transition-colors text-white placeholder:text-white/50 rounded-md"
-                    placeholder="+44 1234 567890"
+                    placeholder="+447955426807"
                   />
                 </div>
 
@@ -228,7 +229,7 @@ const ContactPage = () => {
           className="w-full h-full"
         >
           <iframe
-            src="https://www.google.com/maps?q=53.7460223,-2.4914291&hl=en&z=17&output=embed"
+            src="https://www.google.com/maps?q=Business+Park,+Unit+1+Carlinghurst+Rd,+George+St+W,+Blackburn+BB2+1PQ,+United+Kingdom&hl=en&z=17&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -258,12 +259,12 @@ const ContactPage = () => {
               Check out our frequently asked questions or reach out directly
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              {/* <Link
                 href="/faq"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black font-bold transition-all duration-200"
               >
                 View FAQ
-              </Link>
+              </Link> */}
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary-dark text-black font-bold transition-all duration-200"

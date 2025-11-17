@@ -23,7 +23,7 @@ const members = [
     link: "#",
   },
   {
-    name: "Raheel Ahmed",
+    name: "Muhammad Raheel",
     role: "Founder",
     avatar: "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/raheel.png",
     link: "#",

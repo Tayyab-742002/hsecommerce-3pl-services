@@ -29,7 +29,7 @@ const members = [
     link: "#",
   },
   {
-    name: "Tayab",
+    name: "Tayab Shakeel",
     role: "Founder",
     avatar:
       "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/Screenshot%202025-11-18%20002857.png",

@@ -31,8 +31,7 @@ const members = [
   {
     name: "Tayab Shakeel",
     role: "Founder",
-    avatar:
-      "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/Screenshot%202025-11-18%20002857.png",
+    avatar: "https://pub-20f982007aa54df4849bcd969b89a1bf.r2.dev/Tee.PNG",
     link: "#",
   },
 ];
@@ -183,12 +182,12 @@ const AboutPage = () => {
                       <span className="inline-block translate-y-6 text-sm text-white/70 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                         {member.role}
                       </span>
-                      <Link
+                      {/* <Link
                         href={member.link}
                         className="inline-block translate-y-8 text-sm tracking-wide text-primary opacity-0 transition-all duration-500 hover:text-primary-light group-hover:translate-y-0 group-hover:opacity-100"
                       >
                         Linktree →
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </motion.div>

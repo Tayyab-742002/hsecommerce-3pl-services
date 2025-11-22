@@ -13,6 +13,7 @@
     "@number-flow/react": "^0.5.10",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-slot": "^1.2.4",
+    "@react-email/components": "^1.0.1",
     "@studio-freight/lenis": "^1.0.42",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
@@ -29,6 +30,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "recharts": "^3.4.1",
+    "resend": "^6.5.2",
     "sonner": "^2.0.7",
     "swiper": "^12.0.3",
     "tailwind-merge": "^3.4.0"

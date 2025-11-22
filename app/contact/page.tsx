@@ -2,7 +2,15 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
 import Link from "next/link";
 import { ContactCard } from "@/components/ui/contact-card";
 
@@ -41,14 +49,50 @@ const ContactPage = () => {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      // Success - reset form and show success message
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to send message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -60,6 +104,8 @@ const ContactPage = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
   return (
@@ -193,13 +239,25 @@ const ContactPage = () => {
                   />
                 </div>
 
+                {/* Error Message */}
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-3 px-4 py-3 bg-red-900/20 border border-red-500/50 text-red-300 rounded-md"
+                  >
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <span className="text-sm">{error}</span>
+                  </motion.div>
+                )}
+
                 {/* Submit Button */}
                 <div className="pt-4">
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-gray-300 text-gray-900 font-bold rounded-md shadow-lg"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-bold rounded-md shadow-lg"
                     >
                       <CheckCircle className="w-5 h-5" strokeWidth={2.5} />
                       Message Sent Successfully
@@ -207,9 +265,17 @@ const ContactPage = () => {
                   ) : (
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-gray-300 hover:bg-gray-400 text-gray-900 font-bold transition-all duration-200 rounded-md shadow-lg"
+                      disabled={isSubmitting}
+                      className="w-full px-8 py-4 bg-primary hover:bg-primary-dark disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-bold transition-all duration-200 rounded-md shadow-lg flex items-center justify-center gap-2"
                     >
-                      Submit
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Submit"
+                      )}
                     </button>
                   )}
                 </div>
@@ -229,7 +295,7 @@ const ContactPage = () => {
           className="w-full h-full"
         >
           <iframe
-            src="https://www.google.com/maps?q=Business+Park,+Unit+1+Carlinghurst+Rd,+George+St+W,+Blackburn+BB2+1PQ,+United+Kingdom&hl=en&z=17&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2359.4412620401204!2d-2.4940040223798143!3d53.74602544474228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6aad0fcf48a1b795%3A0x27f4343ddecd3ff4!2sH%26S%20ECOMMERCE%20LTD!5e0!3m2!1sen!2s!4v1763801728719!5m2!1sen!2s"
             width="100%"
             height="100%"
             style={{ border: 0 }}

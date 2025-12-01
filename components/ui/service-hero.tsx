@@ -123,7 +123,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               >
                 <Image
                   src={service.hero.image}
-                  alt={service.title}
+                  alt={`${service.title} - Professional ${service.title.toLowerCase()} services at H&S E-commerce 3PL fulfilment centre in Blackburn, UK`}
                   fill
                   className="object-cover"
                   priority

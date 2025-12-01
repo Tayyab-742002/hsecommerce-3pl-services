@@ -102,8 +102,6 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
         transition: {
           duration: 0.3,
           ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse" as const,
         },
       },
     };
@@ -147,7 +145,10 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
         {imgSrc && (
           <motion.img
             src={imgSrc}
-            alt={imgAlt || title}
+            alt={
+              imgAlt ||
+              `${title} - Process illustration for H&S E-commerce 3PL services`
+            }
             className="absolute -right-8 -bottom-8 w-40 h-40 object-contain opacity-30 group-hover:opacity-100"
             variants={imageAnimation as Variants}
           />

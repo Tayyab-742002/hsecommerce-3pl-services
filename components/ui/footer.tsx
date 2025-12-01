@@ -28,7 +28,7 @@ export const Footer = () => {
               <div className="w-12 h-12 bg-primary flex items-center justify-center group-hover:bg-primary-dark transition-colors duration-300">
                 <Image
                   src="/logo.JPG"
-                  alt="H&S E-commerce"
+                  alt="H&S E-commerce LTD - Professional 3PL Fulfilment Services UK"
                   width={44}
                   height={44}
                 />

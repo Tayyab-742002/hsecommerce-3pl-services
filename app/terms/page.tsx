@@ -110,13 +110,13 @@ const processSteps = [
 const contactBlocks = [
   {
     title: "Contract questions",
-    value: "legal@hsecommerce.co.uk",
+    value: "info@hsecommerce.co.uk",
     description: "Use this email for addendums, DPA requests, or SLA tweaks.",
     icon: Handshake,
   },
   {
     title: "Accounts & billing",
-    value: "+44 203 488 7000",
+    value: "++447955426807",
     description:
       "Finance desk available Mon–Fri 9am-6pm GMT for payment queries.",
     icon: CreditCard,
@@ -174,7 +174,7 @@ const TermsPage = () => {
                 View privacy policy
               </Link>
               <a
-                href="mailto:legal@hsecommerce.co.uk"
+                href="mailto:info@hsecommerce.co.uk"
                 className="inline-flex items-center gap-2  bg-primary px-6 py-3 text-sm font-semibold text-black uppercase tracking-wide"
               >
                 Email legal desk
@@ -270,7 +270,7 @@ const TermsPage = () => {
               </p>
             </div>
             <div className="border border-white/20 px-4 py-2 text-sm text-white/70">
-              Need a bespoke addendum? legal@hsecommerce.co.uk
+              Need a bespoke addendum? info@hsecommerce.co.uk
             </div>
           </div>
 

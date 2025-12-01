@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/ui/navbar-menu";
 import { Footer } from "@/components/ui/footer";
 import { Analytics } from "@vercel/analytics/next";
+import { StructuredData, organizationSchema, localBusinessSchema } from "@/components/seo/structured-data";
+import { PerformanceOptimizer } from "@/components/ui/performance-optimizer";
 // Primary font for body text - clean and professional
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +30,11 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
 });
 export const metadata: Metadata = {
-  title: "H&S E-commerce LTD - Your Trusted 3PL Fulfilment Partner in the UK",
+  metadataBase: new URL("https://hsecommerce.co.uk"),
+  title: {
+    default: "H&S E-commerce LTD - Your Trusted 3PL Fulfilment Partner in the UK",
+    template: "%s | H&S E-commerce LTD",
+  },
   description:
     "Professional 3PL services including warehousing, pick & pack, FBA/FBM fulfilment, kitting, and container handling. Reliable B2B & B2C e-commerce fulfilment solutions to help your business grow.",
   keywords: [
@@ -42,15 +48,63 @@ export const metadata: Metadata = {
     "e-commerce fulfilment",
     "B2B fulfilment",
     "B2C fulfilment",
+    "3PL UK",
+    "third party logistics",
+    "fulfilment centre UK",
+    "warehouse management",
+    "Amazon FBA prep",
+    "order fulfilment",
+    "logistics solutions",
+    "Blackburn logistics",
+    "UK warehousing",
   ],
   authors: [{ name: "H&S E-commerce LTD" }],
+  creator: "H&S E-commerce LTD",
+  publisher: "H&S E-commerce LTD",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "https://hsecommerce.co.uk",
+    siteName: "H&S E-commerce LTD",
     title: "H&S E-commerce LTD - 3PL Fulfilment Services UK",
     description:
       "Professional 3PL services for e-commerce businesses. Warehousing, fulfilment, and logistics solutions.",
-    type: "website",
-    locale: "en_GB",
+    images: [
+      {
+        url: "https://hsecommerce.co.uk/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "H&S E-commerce LTD - 3PL Fulfilment Services",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "H&S E-commerce LTD - 3PL Fulfilment Services UK",
+    description:
+      "Professional 3PL services for e-commerce businesses. Warehousing, fulfilment, and logistics solutions.",
+    images: ["https://hsecommerce.co.uk/og-image.jpg"],
+    creator: "@hsecommerce",
+  },
+  alternates: {
+    canonical: "https://hsecommerce.co.uk",
+  },
+  verification: {
+    // Add Google Search Console verification when available
+    // google: "your-verification-code",
+  },
+  category: "Logistics & Fulfilment",
 };
 
 export default function RootLayout({
@@ -63,6 +117,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${montserrat.variable} antialiased font-sans`}
       >
+        <PerformanceOptimizer />
+        <StructuredData data={organizationSchema} />
+        <StructuredData data={localBusinessSchema} />
         <Navbar />
         {children}
         <Footer />

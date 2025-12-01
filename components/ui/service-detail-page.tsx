@@ -10,6 +10,7 @@ import { ServiceCard } from "./service-card";
 import { ServiceListingCard } from "./service-listing-card";
 import { StickyFeatureSection } from "./sticky-feature-section";
 import { CardCarousel } from "./card-carousel";
+import { FAQSection } from "./faq-section";
 
 interface ServiceDetailPageProps {
   service: SerializedService;
@@ -35,21 +36,21 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       {/* Overview Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="max-w-3xl"
-            >
-              <div className="w-12 h-1 bg-primary mb-6"></div>
+          >
+            <div className="w-12 h-1 bg-primary mb-6"></div>
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 font-heading">
-                Service Overview
-              </h2>
-              <p className="text-base md:text-lg text-text-secondary leading-relaxed">
-                {service.overview.description}
-              </p>
-            </motion.div>
+              Service Overview
+            </h2>
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+              {service.overview.description}
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -97,12 +98,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               const decorativeImage = countImages[index];
 
               return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <ServiceCard
                     variant="default"
@@ -110,10 +111,10 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                     description={step.description}
                     stepNumber={step.number}
                     imgSrc={decorativeImage}
-                    imgAlt={`${step.title} illustration`}
+                    imgAlt={`${step.title} - Step ${step.number} of ${service.title} process at H&S E-commerce 3PL fulfilment centre`}
                     className="bg-black/95 border border-white/10 text-white h-full"
                   />
-              </motion.div>
+                </motion.div>
               );
             })}
           </div>
@@ -165,13 +166,39 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         </div>
       </section> */}
 
+      {/* FAQ Section */}
+      <FAQSection
+        title="Frequently Asked Questions"
+        subtitle={`Common questions about ${service.title.toLowerCase()}`}
+        faqs={[
+          {
+            question: `What is included in ${service.title.toLowerCase()}?`,
+            answer: service.overview.description,
+          },
+          {
+            question: `How quickly can you start providing ${service.title.toLowerCase()}?`,
+            answer: `Setup typically takes 1-2 weeks. We'll work with you to ensure a smooth onboarding process and can often expedite for urgent needs.`,
+          },
+          {
+            question: `Do you integrate with my e-commerce platform?`,
+            answer: `Yes, we integrate with all major e-commerce platforms including Shopify, WooCommerce, Amazon, eBay, and many more. We can also set up custom API integrations.`,
+          },
+          {
+            question: "What are your pricing terms?",
+            answer:
+              "Our pricing is transparent and based on your specific requirements. We offer flexible pricing plans that scale with your business. Contact us for a custom quote tailored to your needs.",
+          },
+        ]}
+        className="bg-white"
+      />
+
       {/* Gallery Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-              <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
@@ -183,7 +210,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           <CardCarousel
             images={service.gallery.map((image, index) => ({
               src: image,
-              alt: `${service.title} gallery ${index + 1}`,
+              alt: `${service.title} service gallery image ${index + 1} showing ${service.title.toLowerCase()} operations and facilities at H&S E-commerce 3PL warehouse in Blackburn, UK`,
             }))}
             autoplayDelay={3000}
             showPagination={true}
@@ -237,7 +264,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
       {/* CTA Section */}
       <section className="bg-black py-16 md:py-20 lg:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -247,11 +274,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-heading">
               Ready to get started?
             </h2>
-            <p className="text-base md:text-lg text-white/70 mb-10 max-w-2xl mx-auto">
-              Contact our team to discuss how {service.title.toLowerCase()} can
-              benefit your business
+            <p className="text-base md:text-lg text-white/70 mb-10 max-w-2xl mx-auto px-4 text-center leading-relaxed">
+              Contact our team to discuss how{" "}
+              <span className="whitespace-nowrap">
+                {service.title.toLowerCase()}
+              </span>{" "}
+              can benefit your business
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex mt-5 flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-black font-bold transition-all duration-200"

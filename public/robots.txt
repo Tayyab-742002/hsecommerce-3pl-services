@@ -1,0 +1,31 @@
+# robots.txt for hsecommerce.co.uk
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /portal/
+
+# Sitemap
+Sitemap: https://hsecommerce.co.uk/sitemap.xml
+
+# Crawl-delay
+User-agent: *
+Crawl-delay: 1
+
+# Allow common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+

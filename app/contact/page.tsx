@@ -2,17 +2,10 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  CheckCircle,
-  AlertCircle,
-  Loader2,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { ContactCard } from "@/components/ui/contact-card";
+import { FAQSection } from "@/components/ui/faq-section";
 
 const contactInfo = [
   {
@@ -49,50 +42,14 @@ const ContactPage = () => {
     phone: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
-
-      // Success - reset form and show success message
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Failed to send message. Please try again."
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Handle form submission here
+    console.log(formData);
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const handleChange = (
@@ -104,8 +61,6 @@ const ContactPage = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    // Clear error when user starts typing
-    if (error) setError(null);
   };
 
   return (
@@ -239,25 +194,13 @@ const ContactPage = () => {
                   />
                 </div>
 
-                {/* Error Message */}
-                {error && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-3 px-4 py-3 bg-red-900/20 border border-red-500/50 text-red-300 rounded-md"
-                  >
-                    <AlertCircle className="w-5 h-5 shrink-0" />
-                    <span className="text-sm">{error}</span>
-                  </motion.div>
-                )}
-
                 {/* Submit Button */}
                 <div className="pt-4">
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-bold rounded-md shadow-lg"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-gray-300 text-gray-900 font-bold rounded-md shadow-lg"
                     >
                       <CheckCircle className="w-5 h-5" strokeWidth={2.5} />
                       Message Sent Successfully
@@ -265,17 +208,9 @@ const ContactPage = () => {
                   ) : (
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="w-full px-8 py-4 bg-primary hover:bg-primary-dark disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-bold transition-all duration-200 rounded-md shadow-lg flex items-center justify-center gap-2"
+                      className="w-full px-8 py-4 bg-gray-300 hover:bg-gray-400 text-gray-900 font-bold transition-all duration-200 rounded-md shadow-lg"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        "Submit"
-                      )}
+                      Submit
                     </button>
                   )}
                 </div>
@@ -295,7 +230,7 @@ const ContactPage = () => {
           className="w-full h-full"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2359.4412620401204!2d-2.4940040223798143!3d53.74602544474228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6aad0fcf48a1b795%3A0x27f4343ddecd3ff4!2sH%26S%20ECOMMERCE%20LTD!5e0!3m2!1sen!2s!4v1763801728719!5m2!1sen!2s"
+            src="https://www.google.com/maps?q=Business+Park,+Unit+1+Carlinghurst+Rd,+George+St+W,+Blackburn+BB2+1PQ,+United+Kingdom&hl=en&z=17&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -308,9 +243,48 @@ const ContactPage = () => {
         </motion.div>
       </section>
 
+      {/* FAQ Section */}
+      <FAQSection
+        title="Frequently Asked Questions"
+        subtitle="Quick answers to common questions about our services"
+        faqs={[
+          {
+            question: "How quickly can I get a quote?",
+            answer:
+              "We typically respond to quote requests within 24 hours during business days. For urgent enquiries, call us directly at +44 7955 426807.",
+          },
+          {
+            question: "What information do I need to provide for a quote?",
+            answer:
+              "We'll need details about your products, order volumes, shipping destinations, and any special requirements. Our team will guide you through the process.",
+          },
+          {
+            question: "Do you handle international shipping?",
+            answer:
+              "Yes, we can handle both UK and international shipping. We work with multiple carriers to provide the best rates and delivery times for your needs.",
+          },
+          {
+            question: "Can I track my inventory in real-time?",
+            answer:
+              "Absolutely! Our client portal provides real-time inventory tracking, order status updates, and detailed reporting. You'll have full visibility of your stock and orders.",
+          },
+          {
+            question: "What happens if there's an issue with my order?",
+            answer:
+              "We have a dedicated support team ready to help. With 99.8% accuracy, issues are rare, but when they occur, we resolve them immediately and keep you informed throughout the process.",
+          },
+          {
+            question: "How do I get started?",
+            answer:
+              "Simply fill out the contact form above or call us at +44 7955 426807. We'll arrange a consultation to understand your needs and provide a tailored solution.",
+          },
+        ]}
+        className="bg-white"
+      />
+
       {/* FAQ Quick Links */}
       <section className="py-20 md:py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-center flex-col items-center  md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -321,16 +295,11 @@ const ContactPage = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-heading">
               Got questions?
             </h2>
-            <p className="text-lg text-white/70 mb-10 max-w-2xl mx-auto">
-              Check out our frequently asked questions or reach out directly
+            <p className="text-lg  text-white/70 mb-10 max-w-2xl mx-auto px-4 text-center leading-relaxed">
+              Check out our services and increase your business growth before
+              its too late
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* <Link
-                href="/faq"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black font-bold transition-all duration-200"
-              >
-                View FAQ
-              </Link> */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-5">
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary-dark text-black font-bold transition-all duration-200"

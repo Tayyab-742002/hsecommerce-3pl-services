@@ -47,7 +47,7 @@ export default function PortalPage() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6 font-heading">
                 Ready to Access Your Portal?
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto px-4 text-center leading-relaxed">
                 Click the button below to securely access your dashboard and
                 start managing your fulfilment operations.
               </p>

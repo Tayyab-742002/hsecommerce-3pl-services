@@ -36,12 +36,12 @@ export const CTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-16 font-heading">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 md:mb-12 font-heading">
               Let&apos;s work together
             </h2>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
               {/* Primary CTA */}
               <Link
                 href="/contact"

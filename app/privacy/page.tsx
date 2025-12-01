@@ -102,14 +102,14 @@ const rightsList = [
 const contactPoints = [
   {
     title: "Data Protection Contact",
-    detail: "privacy@hsecommerce.co.uk",
+    detail: "info@hsecommerce.co.uk",
     description:
       "Use this email for privacy requests, DPIAs, or to report a concern.",
     icon: MailCheck,
   },
   {
     title: "Trust & Safety Team",
-    detail: "+44 161 123 4000",
+    detail: "+447955426807",
     description:
       "Available Monday to Friday for urgent compliance or security queries.",
     icon: Users2,
@@ -168,7 +168,7 @@ const PrivacyPage = () => {
                 Talk to compliance
               </Link>
               <a
-                href="mailto:privacy@hsecommerce.co.uk"
+                href="mailto:info@hsecommerce.co.uk"
                 className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-semibold text-black uppercase tracking-wide"
               >
                 Email privacy team
@@ -265,7 +265,7 @@ const PrivacyPage = () => {
               </p>
             </div>
             <div className=" border border-white/20 px-4 py-2 text-sm text-white/70">
-              Need help? Email privacy@hsecommerce.co.uk
+              Need help? Email info@hsecommerce.co.uk
             </div>
           </div>
 

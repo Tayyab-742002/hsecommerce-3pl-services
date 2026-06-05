@@ -156,9 +156,9 @@ export const Footer = () => {
                 <div className="flex items-start gap-3 text-white/60 text-sm">
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0" strokeWidth={2} />
                   <span>
-                    Business Park, Unit 1 Carlinghurst Rd
+                    Unit 5, Carlinghurst Business Park,
                     <br />
-                    George St W, Blackburn BB2 1PQ
+                    George St West, Blackburn,
                     <br />
                     United Kingdom
                   </span>

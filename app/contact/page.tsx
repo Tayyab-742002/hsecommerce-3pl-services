@@ -24,7 +24,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     details:
-      "Business Park, Unit 1 Carlinghurst Rd, George St W, Blackburn BB2 1PQ, United Kingdom",
+      "Unit 5, Carlinghurst Business Park, George St West, Blackburn, United Kingdom",
     link: "https://maps.google.com",
   },
   {
